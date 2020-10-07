@@ -33,7 +33,7 @@ def consulta_t_real_nome(nome):
             codigo = linha[1]
         eel.atualiza_titulo(codigo, titulo)
 
-    except:
+    except(UnboundLocalError):
         if(nome != ''):
             eel.atualiza_titulo(0,'Produto não encontrado')
         else:
@@ -83,7 +83,6 @@ def pega_val(cod):
 def salvar_produto(codigo_prod, nome_prod, preco_vend, preco_cust, estoq):
     lucr = float(preco_vend) - float(preco_cust)
     lucro_perc = round(lucr / float(preco_vend) * 100, 2)
-    nome_prod = nome_prod
 
     lista = (int(codigo_prod), nome_prod, round(float(preco_vend), 2), round(float(preco_cust), 2), round(lucr, 2), round(lucro_perc, 2), int(estoq))
     print(lista)
