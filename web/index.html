@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dashboard Template · Bootstrap</title>
+    <link href="./assets/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="./assets/auto_complete.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link href="dashboard.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionar produto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row" id='myForm'>
+                            <div class="form-group col-md-3">
+                                <label for="input_cod_prod">Código</label>
+                                <input type="number" min="0" class="form-control" id="input_cod_prod">
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="input_nome_prod">Nome do produto</label>
+                                <input type="text" class="form-control" id="input_nome_prod">
+                            </div>
+                            <div class="col-4">
+                                <label for="input_estoque">Qtd</label>
+                                <div class="input-group">
+                                    <input type="number" min="0" class="form-control" id="input_estoque">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">und</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" id='myForm'>
+                            <div class="col-4">
+                                <label for="input_preco_venda">Preço de venda</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">R$</span>
+                                    </div>
+                                    <input type="text" class="form-control calc" id="input_preco_venda">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="input_preco_compra">Preço de custo</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">R$</span>
+                                    </div>
+                                    <input type="text" class="form-control calc" id="input_preco_compra">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-row" id='myForm'>
+                            <div class="col-4">
+                                <label for="input_lucro">Lucro</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">R$</span>
+                                    </div>
+                                    <input type="text" class="form-control calc" id="input_lucro" readonly='readonly'>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <label for="input_lucro_percent">Lucro(%)</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control calc" id="input_lucro_percent" readonly='readonly'>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" onclick="salvar_prod()" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabe">Editar produto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row" id='myForm'>
+                            <div class="form-group col-md-3">
+                                <label for="input_cod_prod_e">Código</label>
+                                <input type="number" min="0" class="form-control" id="input_cod_prod_e">
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="input_nome_prod_e">Nome do produto</label>
+                                <input type="text" class="form-control" id="input_nome_prod_e">
+                            </div>
+                            <div class="col-4">
+                                <label for="input_estoque_e">Qtd</label>
+                                <div class="input-group">
+                                    <input type="number" min="0" class="form-control" id="input_estoque_e">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">und</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" id='myForm'>
+                            <div class="col-4">
+                                <label for="input_preco_venda_e">Preço de venda</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">R$</span>
+                                    </div>
+                                    <input type="text" class="form-control calc" id="input_preco_venda_e">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="input_preco_compra_e">Preço de custo</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">R$</span>
+                                    </div>
+                                    <input type="text" class="form-control calc" id="input_preco_compra_e">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-row" id='myForm'>
+                            <div class="col-4">
+                                <label for="input_lucro_e">Lucro</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">R$</span>
+                                    </div>
+                                    <input type="text" class="form-control calc" id="input_lucro_e" readonly='readonly'>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <label for="input_lucro_percent_e">Lucro(%)</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control calc" id="input_lucro_percent_e" readonly='readonly'>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" onclick="salvar_edit()" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal fade" id="exampleModa1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabe1">Excluir</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6 id='txt_remov'>Deseja remover?</h6>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                            <button type="submit" onclick="excluir()" data-dismiss="modal" class="btn btn-primary">Sim</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+
+        <nav id="sidebar">
+            <!-- Sidebar Header -->
+            <div class="sidebar-header">
+                <h3>Sistema PDV</h3>
+            </div>
+
+            <!-- Sidebar Links -->
+            <ul class="list-unstyled nav nav-tabs flex-column components">
+
+                <li class="nav-item"><a class="nav-link active" id="pdv-tab" data-toggle="tab" href="#pdv" role="tab" aria-controls="pdv" aria-selected="false">PDV</a></li>
+                <li class="nav-item"><a class="nav-link" id="prod-tab" data-toggle="tab" href="#prod" role="tab" aria-controls="prod" aria-selected="false">Produtos</a></li>
+                <li class="nav-item"><a class="nav-link" id="clientes-tab" data-toggle="tab" href="#clientes" role="tab" aria-controls="clientes" aria-selected="false">Clientes</a></li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            <button type="button" id="sidebarCollapse" class="navbar-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="tab-content">
+                <div class="tab-pane fade" id="prod" role="tabpanel" aria-labelledby="prod-tab">
+                    <div class="container">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Adicionar produto
+                        </button>
+                        <br />
+                        <br />
+                        <!-- Modal -->
+
+                    </div>
+
+                    <a id='gamb_remov' style='display:none;' value=''></a>
+                    <a id='gamb_edit' style='display:none;' value=''></a>
+                    <table class="table table-dark table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="cursor: context-menu;" id='codigo_produto' onclick="sel_ordem('codigo_produto')">Código</th>
+                                <th scope="col" style="cursor: context-menu;" id='nome_produto' onclick="sel_ordem('nome_produto')">Nome ▾</th>
+                                <th scope="col" style="cursor: context-menu;" id='preco_venda' onclick="sel_ordem('preco_venda')">Preço</th>
+                                <th scope="col" style="cursor: context-menu;" id='preco_custo' onclick="sel_ordem('preco_custo')">Custo</th>
+                                <th scope="col" style="cursor: context-menu;" id='lucro' onclick="sel_ordem('lucro')">Lucro</th>
+                                <th scope="col" style="cursor: context-menu;" id='lucro_percent' onclick="sel_ordem('lucro_percent')">Lucro(%)</th>
+                                <th scope="col" style="cursor: context-menu;" id='estoque' onclick="sel_ordem('estoque')">Qtd</th>
+                                <th scope="col" style="text-align: center;cursor: context-menu;">Opções</th>
+                            </tr>
+                        </thead>
+                        <tbody id='tabela'>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="tab-pane fade" id="clientes" role="tabpanel" aria-labelledby="clientes-tab">...</div>
+
+
+                <!-- INICIO PDV-->
+                <div class="tab-pane fade" id="pdv" role="tabpanel" aria-labelledby="pdv-tab">
+
+                    <br>
+                    <div class='mx-auto' style='width:90%'>
+                        <div id='titulo_prod' class="border rounded text-center" style='font-size: 40pt;background-color:#ffffff;'>SISTEMA PDV</div>
+                        <br>
+                        <div class="form-row">
+                            <div class="col-8">
+                                <input id='campo1' onkeydown="EnterTab('campo2')" class="form-control form-control-lg" type="text" placeholder="Digite o código, nome ou leia o código de barras do produto.">
+
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-lg">Qtd</span>
+                                    </div>
+                                    <input id='campo2' onkeydown="EnterTab('add')" type="number" class="form-control form-control-lg" placeholder="Qtd" value='1' min='1' max='9999'>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button id='add' class="btn  btn-success btn-lg" type="button" onclick="js_add_pdv()" style='width:100%'>Adicionar</button>
+                            </div>
+                        </div>
+
+
+
+
+                        <br>
+                        <br>
+
+
+
+                        <table class="table table-dark table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="cursor: context-menu; min-width:60px" id='pdv_numero'>Nº</th>
+                                    <th scope="col" style="cursor: context-menu; min-width:180px" id='pdv_codigo_produto'>Código</th>
+                                    <th scope="col" style="cursor: context-menu; width:100%" id='pdv_nome_produto'>Nome do produto</th>
+                                    <th scope="col" style="cursor: context-menu; min-width:80px" id='pdv_estoque'>Qtd</th>
+                                    <th scope="col" style="cursor: context-menu; min-width:140px" id='pdv_preco_venda'>Preço (und)</th>
+                                    <th scope="col" style="cursor: context-menu; min-width:140px" id='pdv_preco_total'>Total</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+
+                        <table class='my-tbody table table-striped'>
+
+
+                            <tbody id='tabela_pdv'>
+                            </tbody>
+
+                        </table>
+                        <br>
+
+
+                        <form>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group input-group-lg">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-lg"><img src="./assets/dist/icons/op.svg"></span>
+                                        </div>
+                                        <span class="form-control form-control-lg" style='background-color:#ffffff'>Tael</span>
+                                    </div>
+                                    <br>
+                                    <div class="input-group input-group-lg">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-lg"><img src="./assets/dist/icons/cart.svg"></span>
+                                        </div>
+                                        <span id='itens' class="form-control form-control-lg" style='background-color:#ffffff'>0 itens</span>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="input-group input-group-lg">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-lg" style="width:85px">Desc.</span>
+                                            <span class="input-group-text border-right-0" style="background-color:#ffffff;width:45px">R$</span>
+                                        </div>
+                                        <input id='desconto' class="form-control form-control-lg border-left-0" type="text" placeholder="0,00">
+                                    </div>
+                                    <br>
+                                    <div class="input-group input-group-lg">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-lg" style='width:85px'>Total</span>
+                                            <span class="input-group-text border-right-0" style="color:#00cc00;background-color:#ffffff;width:45px">R$</span>
+                                        </div>
+                                        <span id='total' class="form-control form-control-lg border-left-0" style='color:#00cc00;background-color:#ffffff'>0,00</span>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block">Opções de caixa (F12)</button>
+                                    <br>
+                                    <button id='finalizar_btn' type="submit" class="btn btn-success btn-lg btn-block">Finalizar venda (F8)</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- FINAL PDV -->
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="./assets/dist/js/bootstrap.bundle.js"></script>
+    <script src="./assets/dist/js/jquery.mask.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="dashboard2.js"></script>
+    <script src="./assets/auto_complete.js"></script>
+</body>
+</html>
