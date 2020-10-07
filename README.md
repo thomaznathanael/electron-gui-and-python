@@ -1,9 +1,9 @@
 # Electron GUI with Python backend
 
 [![Python](https://img.shields.io/pypi/pyversions/Eel?style=for-the-badge&logo=python)](https://www.python.org/)
-[![License](https://img.shields.io/github/license/thomaznathanael/electron-gui-and-python?style=for-the-badge)](https://github.com/thomaznathanael/Listen-youtube-playlist-with-python/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/thomaznathanael/electron-gui-and-python?style=for-the-badge)](https://github.com/thomaznathanael/electron-gui-and-python/blob/main/LICENSE)
 
-[![Alerts](https://img.shields.io/lgtm/alerts/github/thomaznathanael/electron-gui-and-python?style=for-the-badge&logo=lgtm)](https://lgtm.com/projects/g/thomaznathanael/Listen-youtube-playlist-with-python/alerts/)
+[![Alerts](https://img.shields.io/lgtm/alerts/github/thomaznathanael/electron-gui-and-python?style=for-the-badge&logo=lgtm)](https://lgtm.com/projects/g/thomaznathanael/electron-gui-and-python/alerts/)
 [![Quality](https://img.shields.io/lgtm/grade/python/github/thomaznathanael/electron-gui-and-python?style=for-the-badge&logo=lgtm)](https://lgtm.com/projects/g/thomaznathanael/Listen-youtube-playlist-with-python/context:python)
 [![Quality](https://img.shields.io/lgtm/grade/javascript/github/thomaznathanael/electron-gui-and-python?style=for-the-badge&logo=lgtm)](https://lgtm.com/projects/g/thomaznathanael/electron-gui-and-python/context:javascript)
 
