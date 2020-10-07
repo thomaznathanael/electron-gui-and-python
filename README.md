@@ -29,7 +29,7 @@ npm install electron
 
 This project was based on Eel library, if you want to learn more about Eel, go to [repository](https://github.com/samuelhwilliams/Eel)
 
-[![Python Eel](https://img.shields.io/badge/Python-EEL-blue?style=for-the-badge&logo=python)](https://pypi.org/project/Eel/)
+[![Pypi Eel](https://img.shields.io/badge/Pypi-EEL-blue?style=for-the-badge&logo=python)](https://pypi.org/project/Eel/)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
