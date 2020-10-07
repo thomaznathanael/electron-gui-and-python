@@ -5,7 +5,7 @@
 
 [![Alerts](https://img.shields.io/lgtm/alerts/github/thomaznathanael/electron-gui-and-python?style=for-the-badge&logo=lgtm)](https://lgtm.com/projects/g/thomaznathanael/Listen-youtube-playlist-with-python/alerts/)
 [![Quality](https://img.shields.io/lgtm/grade/python/github/thomaznathanael/electron-gui-and-python?style=for-the-badge&logo=lgtm)](https://lgtm.com/projects/g/thomaznathanael/Listen-youtube-playlist-with-python/context:python)
-[![Quality](https://img.shields.io/lgtm/grade/javascript/github/thomaznathanael/electron-gui-and-python?style=for-the-badge&logo=lgtm)](https://lgtm.com/projects/g/thomaznathanael/Listen-youtube-playlist-with-python/context:javascript)
+[![Quality](https://img.shields.io/lgtm/grade/javascript/github/thomaznathanael/electron-gui-and-python?style=for-the-badge&logo=lgtm)](https://lgtm.com/projects/g/thomaznathanael/electron-gui-and-python/context:javascript)
 
 This is a simple electron based gui with python as backend language.
 
