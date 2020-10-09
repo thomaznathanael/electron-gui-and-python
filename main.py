@@ -119,4 +119,4 @@ def remover_produto(rem_cod):
 
 
 
-eel.start('index.html', mode='custom', cmdline_args=['node_modules/electron/dist/electron.exe', '.'])
+eel.start('index.html', mode='custom', cmdline_args=['node_modules/electron/dist/electron', '.'])
