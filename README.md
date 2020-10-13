@@ -31,6 +31,7 @@ Open a terminal and go to the project folder and execute:
 ```bash
 npm install electron
 ```
+And just execute main.py
 
 ## Information
 
